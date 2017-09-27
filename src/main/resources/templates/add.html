@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Movie</title>
+    <link rel="stylesheet" th:href="@{'/assets/css/bootstrap.min.css'}" />
+</head>
+<body>
+    <div class="container">
+        <form class="form-horizontal" th:object="${movie}" action="/add" method="POST">
+            <fieldset>
+                <legend>Enter Movie Details</legend>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Movie Title</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" th:field="*{title}" placeholder="Title"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Genre</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" th:field="*{genre}" placeholder="Genre"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">IMDB Link</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" th:field="*{link}" placeholder="IMDB Link"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Release Year</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" th:field="*{release}" placeholder="Year of Release"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-offset-2">
+                            <input class="btn btn-success" type="submit" value="Add Movie"/>
+                            <a href="/" class="pull-right btn btn-primary">Back to Movies</a>
+                        </div>
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+</html>
