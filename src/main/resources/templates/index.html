@@ -19,6 +19,8 @@
                 <span th:text="${myMovie.release}"></span>
                 <br/>
                 <span th:text="${myMovie.genre}"></span>
+                <br/>
+                <a class="btn btn-default btn-xs" th:href="@{'/movie/' + ${myMovie.id}}">Edit Movie</a>
             </li>
         </ul>
     </div>
