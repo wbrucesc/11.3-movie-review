@@ -1,6 +1,7 @@
 package com.will.moviereview.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -21,6 +22,17 @@ public class Movie {
         this.genre = genre;
         this.link = link;
         this.release = release;
+    }
+
+    @OneToMany(mappedBy = "movie")
+    private List<Review> reviews;
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public long getId() {
@@ -61,5 +73,17 @@ public class Movie {
 
     public void setRelease(String release) {
         this.release = release;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
+                ", link='" + link + '\'' +
+                ", release='" + release + '\'' +
+                ", reviews=" + reviews +
+                '}';
     }
 }

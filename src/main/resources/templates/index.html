@@ -8,22 +8,46 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center well well-lg">WELCOME TO MOVIES!</h1>
-        <a href="/add" class="btn btn-success pull-right">Add a Movie</a>
+        <div class="container">
+            <h1 class="text-center well well-lg">WELCOME TO MOVIES!</h1>
+            <a href="/add" class="btn btn-success pull-right">Add a Movie</a>
+            <a href="/reviews" class="btn btn-info pull-right">See All Reviews</a>
+        </div>
 
-    <div class="container col-md-10 col-md-offset-2">
-        <ul class="row list-unstyled text-center">
-            <li id="flick" th:each="myMovie : ${myMovies}" class="container well well-sm col-md-3">
-                <a th:href="${myMovie.link}" th:text="${myMovie.title}"></a>
-                <br/>
-                <span th:text="${myMovie.release}"></span>
-                <br/>
-                <span th:text="${myMovie.genre}"></span>
-                <br/>
-                <a class="btn btn-default btn-xs" th:href="@{'/movie/' + ${myMovie.id}}">Edit Movie</a>
-            </li>
-        </ul>
-    </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 movie-box" th:each="movie : ${myMovies}">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a th:href="${movie.link}" class="panel-title" th:text="${movie.title}"></a>
+                        </div>
+                        <div class="panel-body">
+                            <div th:text="${movie.genre}"></div>
+                            <div th:text="${movie.release}"></div>
+                            <div><a th:href="${movie.link}" class="panel-title">More info</a></div>
+                        </div>
+                        <a class="btn btn-success btn-xs" th:href="@{'/createReview/' + ${movie.id}}" type="submit" value="Create Review">Create Review</a>
+                        <a class="btn btn-info btn-xs" th:href="@{'/detail/' + ${movie.id}}">Reviews for this movie</a>
+                        <a class="btn btn-warning btn-xs" th:href="@{'/movie/' + ${movie.id}}">Edit Movie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--<div class="container col-md-10 col-md-offset-2">-->
+        <!--<ul class="row list-unstyled text-center">-->
+            <!--<li id="flick" th:each="myMovie : ${myMovies}" class="container well well-sm col-md-3">-->
+                <!--<a th:href="${myMovie.link}" th:text="${myMovie.title}"></a>-->
+                <!--<br/>-->
+                <!--<span th:text="${myMovie.release}"></span>-->
+                <!--<br/>-->
+                <!--<span th:text="${myMovie.genre}"></span>-->
+                <!--<br/>-->
+                <!--<a class="btn btn-default btn-xs" th:href="@{'/movie/' + ${myMovie.id}}">Edit Movie</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
 
 
     </div>

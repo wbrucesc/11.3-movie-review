@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create Review</title>
+    <link rel="stylesheet" th:href="@{'/assets/css/bootstrap.min.css'}" />
+    <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a review</h1>
+        <a href="/" class="pull-right btn btn-primary">Back to Movies</a>
+    </div>
+
+    <div class="container">
+        <form class="form-horizontal" th:object="${review}" th:action="@{'/createReview/' + ${id}}" method="POST">
+            <fieldset>
+                <legend>Review</legend>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Name</label>
+                    <div class="col-lg-6">
+                        <input class="form-control" type="text" th:field="*{author}" placeholder="Enter your name"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Notes</label>
+                    <div class="col-lg-6">
+                        <input class="form-control" type="text" th:field="*{notes}" placeholder="Notes"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Rating out of 5 stars</label>
+                    <div class="col-lg-6">
+                        <input class="form-control" type="text" th:field="*{rating}" placeholder="Rating out of 5 stars"/>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-lg-2 control-label">Release Year</label>-->
+                    <!--<div class="col-lg-6">-->
+                        <!--<input class="form-control" type="text" th:field="*{release}" placeholder="Year of Release"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <div class="col-lg-6 col-lg-offset-2">
+                        <input class="btn btn-success" type="submit" value="Add Review"/>
+                        <a href="/" class="pull-right btn btn-primary">Back to Movies</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+</html>

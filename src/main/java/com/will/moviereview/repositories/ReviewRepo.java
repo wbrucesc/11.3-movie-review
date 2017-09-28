@@ -1,4 +1,7 @@
 package com.will.moviereview.repositories;
 
-public interface ReviewRepo {
+import com.will.moviereview.models.Review;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ReviewRepo extends CrudRepository<Review, Long> {
 }

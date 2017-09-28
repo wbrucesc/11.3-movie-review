@@ -10,7 +10,7 @@
     <div class="container">
         <form class="form-horizontal" th:object="${movie}" th:action="@{'/movie/' + ${movie.id}}" method="POST">
             <fieldset>
-                <legend>Enter Movie Details</legend>
+                <legend>Edit Movie Details</legend>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">Movie Title</label>
                     <div class="col-lg-6">
@@ -46,3 +46,4 @@
     </div>
 </body>
 </html>
+
