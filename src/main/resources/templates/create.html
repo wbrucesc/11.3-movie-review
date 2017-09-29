@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Create Review</title>
     <link rel="stylesheet" th:href="@{'/assets/css/bootstrap.min.css'}" />
+    <link rel="stylesheet" href="/assets/css/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
@@ -34,12 +35,6 @@
                         <input class="form-control" type="text" th:field="*{rating}" placeholder="Rating out of 5 stars"/>
                     </div>
                 </div>
-                <!--<div class="form-group">-->
-                    <!--<label class="col-lg-2 control-label">Release Year</label>-->
-                    <!--<div class="col-lg-6">-->
-                        <!--<input class="form-control" type="text" th:field="*{release}" placeholder="Year of Release"/>-->
-                    <!--</div>-->
-                <!--</div>-->
                 <div class="form-group">
                     <div class="col-lg-6 col-lg-offset-2">
                         <input class="btn btn-success" type="submit" value="Add Review"/>
