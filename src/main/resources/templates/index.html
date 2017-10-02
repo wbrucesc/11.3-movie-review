@@ -27,7 +27,7 @@
                         <div class="panel-body">
                             <div th:text="${movie.genre}"></div>
                             <div th:text="${movie.release}"></div>
-                            <div><a th:href="${movie.link}" class="panel-title">More info</a></div>
+                            <div><a th:href="${movie.link}">More info</a></div>
                         </div>
                         <a class="btn btn-success btn-xs" th:href="@{'/createReview/' + ${movie.id}}" type="submit" value="Create Review">Create Review</a>
                         <a class="btn btn-info btn-xs" th:href="@{'/detail/' + ${movie.id}}">Reviews for this movie</a>

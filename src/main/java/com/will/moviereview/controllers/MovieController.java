@@ -68,20 +68,20 @@ public class MovieController {
     }
 
     //takes you to create review page
-    @RequestMapping("/createReview/{id}")
+    @RequestMapping("/createReview/{movieId}")
     public String createReviewForm(Model model,
-                                   @PathVariable("id") long id) {
+                                   @PathVariable("movieId") long movieId) {
         model.addAttribute("review", new Review());
-        model.addAttribute("id", id);
+        model.addAttribute("id", movieId);
         return "create";
     }
 
     //creates review
-    @RequestMapping(value = "/createReview/{id}", method = RequestMethod.POST)
-    public String createReview(@PathVariable("id") long id,
+    @RequestMapping(value = "/createReview/{movieId}", method = RequestMethod.POST)
+    public String createReview(@PathVariable("movieId") long movieId,
                                @ModelAttribute Review review) {
 
-        Movie movie = movieRepo.findOne(id);
+        Movie movie = movieRepo.findOne(movieId);
         review.setMovie(movie);
         reviewRepo.save(review);
 
