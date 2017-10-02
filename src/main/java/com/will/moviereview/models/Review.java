@@ -11,7 +11,11 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String author;
+//    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
+
     private String notes;
     private int rating;
 
@@ -28,11 +32,11 @@ public class Review {
         this.id = id;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
@@ -58,5 +62,16 @@ public class Review {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", author=" + author +
+                ", notes='" + notes + '\'' +
+                ", rating=" + rating +
+                ", movie=" + movie +
+                '}';
     }
 }

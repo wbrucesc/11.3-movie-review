@@ -2,8 +2,10 @@ package com.will.moviereview.controllers;
 
 import com.will.moviereview.models.Movie;
 import com.will.moviereview.models.Review;
+import com.will.moviereview.models.User;
 import com.will.moviereview.repositories.MovieRepo;
 import com.will.moviereview.repositories.ReviewRepo;
+import com.will.moviereview.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.security.Principal;
 
 @Controller
 public class MovieController {
@@ -20,6 +24,9 @@ public class MovieController {
 
     @Autowired
     private ReviewRepo reviewRepo;
+
+    @Autowired
+    private UserRepo userRepo;
 
     //lists all movies in table
     @RequestMapping("/")
@@ -79,10 +86,12 @@ public class MovieController {
     //creates review
     @RequestMapping(value = "/createReview/{movieId}", method = RequestMethod.POST)
     public String createReview(@PathVariable("movieId") long movieId,
-                               @ModelAttribute Review review) {
-
+                               @ModelAttribute Review review,
+                               Principal principal) {
+        User me = userRepo.findByUsername(principal.getName());
         Movie movie = movieRepo.findOne(movieId);
         review.setMovie(movie);
+        review.setAuthor(me);
         reviewRepo.save(review);
 
         return "redirect:/";

@@ -23,7 +23,7 @@
                             <h3 class="panel-title" th:text="${review.movie.title}"></h3>
                         </div>
                         <div class="panel-body">
-                            <div th:text="${review.author}"></div>
+                            <div th:text="${review.author.username}"></div>
                             <div th:text="${review.notes}"></div>
                             <div th:text="${review.rating} + ' ' + 'stars'"></div>
                         </div>

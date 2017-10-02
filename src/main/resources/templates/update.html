@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <form class="form-horizontal" th:object="${movie}" th:action="@{'/movie/' + ${movie.id}}" method="POST">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <fieldset>
                 <legend>Edit Movie Details</legend>
                 <div class="form-group">
