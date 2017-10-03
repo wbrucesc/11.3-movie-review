@@ -37,17 +37,27 @@ public class MovieController {
 
     //takes you to create movie page
     @RequestMapping("/add")
-    public String add(Model model) {
-        model.addAttribute("movie", new Movie());
-        return "add";
+    public String add(Model model,
+                      Principal principal) {
+        if (principal != null) {
+            User me = userRepo.findByUsername(principal.getName());
+            model.addAttribute("movie", new Movie());
+            return "add";
+        }
+        return "redirect:/login";
     }
 
     //creates movie
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String index(@ModelAttribute Movie movie) {
-        System.out.println(movie);
-        movieRepo.save(movie);
-        return "redirect:/";
+    public String index(@ModelAttribute Movie movie,
+                        Principal principal) {
+
+        if (principal != null) {
+            User me = userRepo.findByUsername(principal.getName());
+            movieRepo.save(movie);
+            return "redirect:/";
+        }
+        return "redirect:/login";
     }
 
     //get to movie detail/update page
@@ -77,10 +87,16 @@ public class MovieController {
     //takes you to create review page
     @RequestMapping("/createReview/{movieId}")
     public String createReviewForm(Model model,
-                                   @PathVariable("movieId") long movieId) {
-        model.addAttribute("review", new Review());
-        model.addAttribute("id", movieId);
-        return "create";
+                                   @PathVariable("movieId") long movieId,
+                                   Principal principal) {
+
+        if (principal != null) {
+            User me = userRepo.findByUsername(principal.getName());
+            model.addAttribute("review", new Review());
+            model.addAttribute("id", movieId);
+            return "create";
+        }
+        return "redirect:/login";
     }
 
     //creates review
@@ -88,14 +104,16 @@ public class MovieController {
     public String createReview(@PathVariable("movieId") long movieId,
                                @ModelAttribute Review review,
                                Principal principal) {
-        User me = userRepo.findByUsername(principal.getName());
-        Movie movie = movieRepo.findOne(movieId);
-        review.setMovie(movie);
-        review.setAuthor(me);
-        reviewRepo.save(review);
 
+        if (principal != null) {
+            User me = userRepo.findByUsername(principal.getName());
+            Movie movie = movieRepo.findOne(movieId);
+            review.setMovie(movie);
+            review.setAuthor(me);
+            reviewRepo.save(review);
+            return "redirect:/";
+        }
         return "redirect:/";
-
     }
 
     //lists all reviews for a particular movie

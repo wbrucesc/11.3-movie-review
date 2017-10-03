@@ -20,6 +20,8 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
+    private boolean active;
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
@@ -88,5 +90,13 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return username;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
