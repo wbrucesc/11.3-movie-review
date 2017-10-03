@@ -10,15 +10,18 @@
 <body>
     <div class="container">
         <div class="container">
-            <h1 class="text-center well well-lg">Movie Judge <i class="fa fa-legal"></i></h1>
+            <div class="container well well-lg">
+                <h1 class="text-center">Movie Judge <i class="fa fa-legal"></i></h1>
+                <form class="pull-right" action="/logout" method="POST">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input class="btn btn-primary" type="submit" value="Logout"/>
+                </form>
+            </div>
 
             <a href="/add" class="btn btn-success pull-right">Add a Movie</a>
             <a href="/reviews" class="btn btn-info pull-right">See All Reviews</a>
 
-            <form action="/logout" method="POST">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                <input type="submit" value="Logout"/>
-            </form>
+
         </div>
 
 
@@ -46,6 +49,8 @@
     <div class="container text-center">
         <i class="fa fa-legal fa-3x"></i>
     </div>
+
+
 
 </body>
 </html>

@@ -10,24 +10,17 @@
 <body>
     <div class="container">
         <h1>Create a review</h1>
-        <a href="/" class="pull-right btn btn-primary">Back to Movies</a>
     </div>
 
-    <div class="container">
+    <div class="container well-lg">
         <form class="form-horizontal" th:object="${review}" th:action="@{'/createReview/' + ${id}}" method="POST">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <fieldset>
                 <legend>Review</legend>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">Name</label>
-                    <div class="col-lg-6">
-                        <input class="form-control" type="text" th:field="*{author}" placeholder="Enter your name"/>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-lg-2 control-label">Notes</label>
                     <div class="col-lg-6">
-                        <input class="form-control" type="text" th:field="*{notes}" placeholder="Notes"/>
+                        <input class="form-control" type="text" th:field="*{notes}" placeholder="Share your thoughts on the film!"/>
                     </div>
                 </div>
                 <div class="form-group">
